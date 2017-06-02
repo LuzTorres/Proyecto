@@ -8,7 +8,7 @@ struct dato {
 *a, *i, *p, *e;
 int da;
 int buscar(int d);
-void insertar(int dat);
+void insertar(int dat); 
 void mostrar(void);
 void borrar(void);
 void menu(void);
@@ -19,11 +19,18 @@ main() {
 }
 void menu(void) {
 	int opc,da;
-		cout<<"Programa para almacenar datos y guardar en archivo\n";
-	do { //mostrar opciones
-	    cout<<"\nOpcion:";
+			cout<<"\n\t***Programa para almacenar datos y guardar en archivo***\n";
+	
+   time_t now = time(0);  
+   char* dt = ctime(&now);
+   cout << "\nLa fecha y hora local es:\t" << dt << endl;
+   tm *gmtm = gmtime(&now);
+   dt = asctime(gmtm);
+   
+   	  do { //mostrar opciones
+	    cout<<"\nQue desea hacer?:";
 		cout<<"\n\t1 - Buscar datos";
-		cout<<"\n \t2 - Insertar datos";
+		cout<<"\n\t2 - Insertar datos";
 		cout<<"\n\t3 - Mostrar todos los datos";
 		cout<<"\n\t4 - Borrar un dato";
 		cout<<"\n\t5 - Guardar datos a Archivo";
@@ -31,7 +38,8 @@ void menu(void) {
 		cout<<"\n\t0 - Finalizar";
 		cout<<"\n\nSeleccione opcion: ";
 		cin>>opc;
-		switch(opc) {
+		switch(opc) {  //para los casos
+		
 			case 0: cout<<"\n\nFinaliza el programa";
 			getch();// borrar
 			p=i;
@@ -83,7 +91,7 @@ void mostrar(void) { // muestra dato
 	cout<<"\n\tEso es todo";
 	getch();
 }
-int buscar(int d) { // buscar dato
+int buscar(int d) { // buscar dato si es que existe y si es que se repete
 	if (!i) {
 		cout<<"No hay datos en la lista!!!\n";
 		getch();
